@@ -1598,3 +1598,921 @@ div.alert-danger {
   margin-top: 10px !important;
   font-size: 12px !important;
 }
+
+/* ── Footer — minimal full-width bar ── */
+#footer {
+  /* Break out of #body's 8px side padding to reach full viewport width */
+  margin: 40px -8px 0 -8px !important;
+  padding: 16px 24px !important;
+  border-top: 1px solid var(--border-muted) !important;
+  background: transparent !important;
+  text-align: center !important;
+  color: var(--text-muted) !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+  clear: both !important;
+  height: auto !important;
+}
+
+#footer a {
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease !important;
+}
+
+#footer a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Sponsor logo row — inline, compact */
+.footer-logo-div,
+.footer-logo-div-ru {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+  height: auto !important;
+  margin: 0 auto 8px !important;
+  position: static !important;
+  left: auto !important;
+}
+
+.footer-logo-div a,
+.footer-logo-div-ru a {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 6px !important;
+  opacity: 0.45 !important;
+  transition: opacity 0.15s ease !important;
+}
+
+.footer-logo-div a:hover,
+.footer-logo-div-ru a:hover {
+  opacity: 0.85 !important;
+}
+
+.footer-logo-div img,
+.footer-logo-div-ru img {
+  display: block !important;
+  height: 22px !important;
+  width: auto !important;
+  filter: brightness(0.6) grayscale(0.5) !important;
+  transition: filter 0.15s ease !important;
+}
+
+.footer-logo-div a:hover img,
+.footer-logo-div-ru a:hover img {
+  filter: brightness(0.9) grayscale(0) !important;
+}
+
+/* Vertical separator — slim single pixel */
+.footer-logo-div .sep,
+.footer-logo-div-ru .sep {
+  width: 1px !important;
+  border: none !important;
+  border-left: 1px solid var(--border-muted) !important;
+  height: 16px !important;
+  margin: 0 10px !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+}
+
+/* Copyright text — smallest, most muted */
+#footer > div:not(.footer-logo-div):not(.footer-logo-div-ru) {
+  font-size: 10px !important;
+  color: var(--text-muted) !important;
+  opacity: 0.55 !important;
+  margin-top: 4px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* ── Theme Picker ── */
+#cfb-theme-wrapper {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-left: 4px !important;
+}
+
+#cfb-theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  border: 1.5px solid var(--border-color) !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  outline: none !important;
+  padding: 0 !important;
+}
+
+#cfb-theme-toggle:hover {
+  color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  background: var(--accent-glow) !important;
+  transform: rotate(20deg) !important;
+}
+
+#cfb-theme-toggle svg {
+  display: block !important;
+  pointer-events: none !important;
+}
+
+/* Dropdown panel */
+#cfb-theme-dropdown {
+  display: none !important;
+  position: absolute !important;
+  top: calc(100% + 10px) !important;
+  right: 0 !important;
+  width: 160px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+  padding: 6px !important;
+  z-index: 99999 !important;
+  animation: cfbFadeIn 0.15s ease !important;
+}
+
+#cfb-theme-dropdown.cfb-open {
+  display: block !important;
+}
+
+@keyframes cfbFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#cfb-theme-label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  padding: 4px 8px 6px !important;
+}
+
+.cfb-theme-option {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  padding: 7px 10px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+}
+
+.cfb-theme-option:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--text-primary) !important;
+}
+
+.cfb-theme-option.cfb-theme-active {
+  background: var(--accent-glow) !important;
+  color: var(--accent-color) !important;
+  font-weight: 600 !important;
+}
+
+.cfb-theme-icon {
+  font-size: 15px !important;
+  line-height: 1 !important;
+}
+
+/* ── Comments & Comment Table ── */
+
+.comment-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 16px 0 !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+}
+
+/* Inside comment-table, cells */
+.comment-table td {
+  padding: 16px !important;
+  border: none !important;
+}
+
+/* Avatar container */
+.comment-table .avatar {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.comment-table .avatar img {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--border-color) !important;
+  object-fit: cover !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+.comment-table .avatar div {
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
+/* Comment info / header row */
+.comment-table .info {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid var(--border-muted) !important;
+  padding-bottom: 8px !important;
+  position: relative !important;
+}
+
+/* Vote / rating score badge */
+.comment-table span[commentid] {
+  position: static !important; /* reset absolute position */
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border-color) !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+}
+
+.comment-table span[commentid] span {
+  font-weight: 700 !important;
+}
+
+/* Comment typography / body */
+.comment-table .ttypography {
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  color: var(--text-primary) !important;
+  padding: 0 !important;
+}
+
+.comment-table .ttypography p {
+  margin: 0 0 8px 0 !important;
+}
+
+.comment-table .ttypography p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Threaded comments formatting on blog pages */
+.comment-table .comment-table {
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.01) !important;
+  margin-top: 12px !important;
+  border-left: 2px solid var(--border-muted) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 0 16px !important;
+}
+
+/* Override the massive 3em margin on comment page wrapper div */
+div[style*="margin:3em 1em"] {
+  margin: 16px 0 !important;
+}
+
+/* ── Second Level Menu / Tabs (Segmented Control with Sliding LavaLamp) ── */
+.second-level-menu {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  margin: 20px 0 !important;
+  padding: 4px !important;
+  display: inline-flex !important;
+  position: relative !important;
+  float: none !important;
+  clear: both !important;
+}
+
+.second-level-menu-list {
+  display: flex !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 4px !important;
+  align-items: center !important;
+  position: relative !important;
+}
+
+.second-level-menu-list li {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+.second-level-menu-list li a {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 16px !important;
+  font-size: 13px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+  transition: color 0.15s ease !important;
+}
+
+/* Hover state: text color becomes dark to contrast with sliding pill */
+.second-level-menu-list li a:hover {
+  color: var(--bg-primary) !important;
+  text-decoration: none !important;
+}
+
+/* Fallback background when sliding LavaLamp is NOT present on the page */
+.second-level-menu-list li.current a {
+  background: var(--accent-color) !important;
+  color: var(--bg-primary) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* When LavaLamp is active, keep link background transparent so the sliding pill shows through */
+.second-level-menu-list:has(.backLava) li.current a {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Default active link text color when menu is not hovered */
+.second-level-menu-list:has(.backLava):not(:hover) li.current a {
+  color: var(--bg-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* When menu is hovered, active tab text returns to gray (as the pill slides away) */
+.second-level-menu-list:has(.backLava):hover li.current a {
+  color: var(--text-secondary) !important;
+}
+
+/* If active tab itself is hovered, keep it dark */
+.second-level-menu-list:has(.backLava):hover li.current a:hover {
+  color: var(--bg-primary) !important;
+}
+
+/* Sliding pill background styled matching theme accent */
+.second-level-menu-list .backLava {
+  position: absolute !important;
+  display: block !important;
+  height: 100% !important;
+  background: var(--accent-color) !important;
+  border-radius: 6px !important;
+  z-index: 1 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  transition: none !important;
+}
+
+/* Hide legacy jquery lavaLamp sub-elements */
+.second-level-menu-list .backLava div {
+  display: none !important;
+}
+
+/* Form inputs & Select dropdowns */
+._TopCommentsPage_daysSelectForm select {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  outline: none !important;
+  font-size: 12px !important;
+  transition: border-color 0.15s ease !important;
+}
+
+._TopCommentsPage_daysSelectForm select:hover,
+._TopCommentsPage_daysSelectForm select:focus {
+  border-color: var(--accent-color) !important;
+}
+
+/* Custom Location and Organization Select Form & Dropdowns */
+#pageContent > div:has(#locationSelect) {
+  float: right !important;
+  position: relative !important;
+  bottom: 0 !important; /* Reset position offset to prevent floating overlaps */
+  margin-top: 12px !important; /* Space above from header elements */
+  margin-bottom: 20px !important; /* Layout spacing below the form */
+  z-index: 5 !important;
+}
+
+#locationSelect {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+#locationSelect > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+#locationSelect label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+}
+
+#locationSelect select,
+select[name="organizationId"] {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+  height: 28px !important;
+  font-size: 12px !important;
+  font-family: inherit !important;
+  outline: none !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+}
+
+#locationSelect select:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background-color: var(--bg-primary) !important;
+}
+
+#locationSelect select:hover:not(:disabled),
+select[name="organizationId"]:hover {
+  border-color: var(--border-muted) !important;
+}
+
+#locationSelect select:focus:not(:disabled),
+select[name="organizationId"]:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+  background-color: var(--bg-primary) !important;
+}
+
+/* Page section title headers */
+#pageContent > div[style*="font-size: 1.25em"] {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  padding: 10px 0 !important;
+  text-align: left !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  margin-bottom: 20px !important;
+}
+
+/* === Catalog Page & History Sidebar === */
+
+/* Overrides for catalog history widget list */
+#sidebar ._CatalogHistorySidebarFrame_historyDiv {
+  font-size: 12px !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_item {
+  padding: 14px 16px !important;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.6 !important;
+  box-sizing: border-box !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_item:last-of-type {
+  border-bottom: none !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_item b.smaller {
+  display: block !important;
+  margin-bottom: 4px !important;
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_name {
+  color: var(--accent-color) !important;
+  font-weight: 600 !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_item code {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-primary) !important;
+  padding: 2px 5px !important;
+  border-radius: 4px !important;
+  font-family: "JetBrains Mono", "Fira Code", monospace !important;
+  font-size: 11px !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_value {
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Beautiful inline deletions/insertions in dark mode */
+#sidebar ._CatalogHistorySidebarFrame_item del {
+  background: var(--color-error-bg) !important;
+  color: var(--color-error) !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  text-decoration: line-through !important;
+}
+
+#sidebar ._CatalogHistorySidebarFrame_item ins {
+  background: var(--color-success-bg) !important;
+  color: var(--color-success) !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+}
+
+/* ── Modern Theme-Based Secondary Buttons (.red-link) ── */
+.red-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  border: 1.5px solid var(--accent-glow) !important;
+  color: var(--bg-primary) !important;
+  border-color: var(--accent-color) !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  margin: 2px 4px !important;
+  background: var(--accent-color) !important;
+  letter-spacing: 0.01em !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.red-link:hover {
+  background: var(--accent-glow) !important;
+  text-decoration: none !important;
+  color: var(--accent-color) !important;
+  box-shadow: 0 4px 12px var(--accent-glow) !important;
+  transform: translateY(-1px) !important;
+}
+
+.red-link:active {
+  transform: translateY(0px) !important;
+  box-shadow: 0 2px 6px var(--accent-glow) !important;
+}
+
+/* ── Inline Column Filters ── */
+span.filter {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+  margin-left: 6px !important;
+  bottom: 0 !important;
+  z-index: 10 !important;
+}
+
+span.filter:has(input:focus) {
+  z-index: 100 !important;
+}
+
+/* Image/Icon override inside the span - Hidden on request */
+span.filter img,
+span.filter img.opened {
+  display: none !important;
+}
+
+/* The actual filter text input */
+span.filter input {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 100px !important; /* modern pill container */
+  padding: 3px 12px !important; /* centered padding */
+  height: 22px !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  position: relative !important;
+  bottom: 0 !important;
+  transition: all 0.15s ease !important;
+  outline: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  box-sizing: border-box !important;
+}
+
+/* Input hover/focus states */
+span.filter input:hover {
+  border-color: var(--border-muted) !important;
+}
+
+span.filter input:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+  background-color: var(--bg-primary) !important;
+}
+
+/* Elevate opacity when input is focused */
+span.filter:has(input:focus) img {
+  opacity: 0.95 !important;
+}
+
+/* === Datatable Header and Filter Overrides === */
+
+/* The header container (title bar) */
+.datatable > div[style*="font-size"] {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  padding: 8px 4px !important;
+  border-bottom: 1.5px solid var(--border-color) !important;
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Hide legacy inner datatable corner elements */
+.datatable .ilt,
+.datatable .irt {
+  display: none !important;
+}
+
+/* The intermediate container div wrapping the table (remedies white backgrounds in dark themes) */
+.datatable > div[style*="background-color: white"],
+.datatable > div[style*="background-color:white"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0 !important;
+  border: none !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* The row count matches indicator */
+.datatable .rowCount {
+  color: var(--text-muted) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin-right: 8px !important;
+  vertical-align: middle !important;
+}
+
+/* The closed search icon (magnifier) */
+.datatable img.closed {
+  width: 15px !important;
+  height: 15px !important;
+  cursor: pointer !important;
+  opacity: 0.6 !important;
+  transition: opacity 0.2s ease !important;
+  vertical-align: middle !important;
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%23374151" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>') !important;
+}
+
+[data-theme="dark"] .datatable img.closed,
+[data-theme="midnight"] .datatable img.closed,
+[data-theme="forest"] .datatable img.closed {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%23abb2bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>') !important;
+}
+
+.datatable img.closed:hover {
+  opacity: 0.95 !important;
+}
+
+/* Close search icon (X) inside active filter container - Hidden on request */
+.datatable span.filter img.opened {
+  display: none !important;
+}
+
+/* ── User Profile Header Card (.info) ── */
+#pageContent div.info {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  padding: 24px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  margin-bottom: 24px !important;
+  position: relative !important;
+}
+
+#pageContent div.info .main-info {
+  margin-bottom: 16px !important;
+}
+
+#pageContent div.info .user-rank {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 6px !important;
+}
+
+#pageContent div.info h1 {
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  margin: 6px 0 12px 0 !important;
+  line-height: 1.2 !important;
+}
+
+#pageContent div.info h1 a {
+  text-decoration: none !important;
+}
+
+#pageContent div.info .main-info div[style*="color: #777"],
+#pageContent div.info .main-info div[style*="color:#777"] {
+  color: var(--text-secondary) !important;
+  font-size: 13px !important;
+  margin-top: 6px !important;
+}
+
+/* User profile metadata list */
+#pageContent div.info ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 16px 0 0 0 !important;
+  border-top: 1px solid var(--border-color) !important;
+  padding-top: 12px !important;
+}
+
+#pageContent div.info ul li {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  padding: 10px 0 !important;
+  font-size: 13px !important;
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+#pageContent div.info ul li:last-child {
+  border-bottom: none !important;
+}
+
+/* Standardized Icon alignment inside metadata list */
+#pageContent div.info ul li img {
+  width: 16px !important;
+  height: 16px !important;
+  object-fit: contain !important;
+  margin-right: 10px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+}
+
+/* Enhance rating numbers and secondary detail elements */
+#pageContent div.info ul li span.smaller {
+  color: var(--text-muted) !important;
+  font-size: 11px !important;
+  margin-left: 6px !important;
+}
+
+/* High-contrast contribution color in dark themes */
+[data-theme="dark"] #pageContent div.info span[style*="color:green"],
+[data-theme="midnight"] #pageContent div.info span[style*="color:green"],
+[data-theme="forest"] #pageContent div.info span[style*="color:green"] {
+  color: var(
+    --color-success
+  ) !important; /* brighter success color for dark mode readability */
+}
+
+/* ── Syntax Highlighting overrides for Dark/Midnight/Forest themes (Google Code Prettify) ── */
+[data-theme="dark"] .prettyprint .str,
+[data-theme="midnight"] .prettyprint .str,
+[data-theme="forest"] .prettyprint .str {
+  color: #ce9178 !important; /* Orange string */
+}
+
+[data-theme="dark"] .prettyprint .kwd,
+[data-theme="midnight"] .prettyprint .kwd,
+[data-theme="forest"] .prettyprint .kwd {
+  color: #569cd6 !important; /* Blue keyword */
+  font-weight: bold !important;
+}
+
+[data-theme="dark"] .prettyprint .com,
+[data-theme="midnight"] .prettyprint .com,
+[data-theme="forest"] .prettyprint .com {
+  color: #6a9955 !important; /* Green comment */
+  font-style: italic !important;
+}
+
+[data-theme="dark"] .prettyprint .typ,
+[data-theme="midnight"] .prettyprint .typ,
+[data-theme="forest"] .prettyprint .typ {
+  color: #4ec9b0 !important; /* Teal type */
+}
+
+[data-theme="dark"] .prettyprint .lit,
+[data-theme="midnight"] .prettyprint .lit,
+[data-theme="forest"] .prettyprint .lit {
+  color: #b5cea8 !important; /* Light green literal */
+}
+
+[data-theme="dark"] .prettyprint .pun,
+[data-theme="midnight"] .prettyprint .pun,
+[data-theme="forest"] .prettyprint .pun {
+  color: #d4d4d4 !important; /* Gray punctuation */
+}
+
+[data-theme="dark"] .prettyprint .pln,
+[data-theme="midnight"] .prettyprint .pln,
+[data-theme="forest"] .prettyprint .pln {
+  color: #d4d4d4 !important; /* Light gray plain text */
+}
+
+[data-theme="dark"] .prettyprint .var,
+[data-theme="midnight"] .prettyprint .var,
+[data-theme="forest"] .prettyprint .var {
+  color: #9cdcfe !important; /* Light blue variable */
+}
+
+[data-theme="dark"] .prettyprint .linenums li,
+[data-theme="midnight"] .prettyprint .linenums li,
+[data-theme="forest"] .prettyprint .linenums li {
+  color: #858585 !important;
+  border-left: 3px solid #3c3c3c !important;
+  background: transparent !important;
+}
+
+/* ── MathJax Formula Legibility in Dark Themes ── */
+[data-theme="dark"] .MathJax,
+[data-theme="midnight"] .MathJax,
+[data-theme="forest"] .MathJax,
+[data-theme="dark"] .math,
+[data-theme="midnight"] .math,
+[data-theme="forest"] .math,
+[data-theme="dark"] .tex-graphics,
+[data-theme="midnight"] .tex-graphics,
+[data-theme="forest"] .tex-graphics {
+  filter: invert(0.85) hue-rotate(180deg) !important;
+}
+
+/* ── Rating Graph canvas invert on dark themes ── */
+[data-theme="dark"] #placeholder canvas,
+[data-theme="midnight"] #placeholder canvas,
+[data-theme="forest"] #placeholder canvas {
+  filter: invert(0.85) hue-rotate(180deg) !important;
+  mix-blend-mode: screen !important; /* blends beautifully on dark background */
+}
+
+#placeholder,
+.chart-container,
+.c-chart,
+.personal-rating-graph {
+  background-color: var(--bg-secondary) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  margin-top: 16px !important;
+}
+
+/* ── Calendar Page Theme Compatibility ── */
+.calendar-table {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
