@@ -231,13 +231,74 @@ function injectMobileMenu() {
   }
 }
 
+function injectSidebarDrawer() {
+  const sidebar = document.querySelector("#sidebar");
+  if (!sidebar) return;
+  if (document.getElementById("cfb-sidebar-toggle")) return;
+
+  const toggle = document.createElement("button");
+  toggle.id = "cfb-sidebar-toggle";
+  toggle.title = "Show Sidebar";
+  toggle.innerHTML = `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="9" y1="3" x2="9" y2="21"></line>
+    </svg>`;
+
+  const backdrop = document.createElement("div");
+  backdrop.className = "cfb-sidebar-backdrop";
+
+  function toggleDrawer(e) {
+    e.stopPropagation();
+    sidebar.classList.toggle("cfb-sidebar-open");
+    backdrop.classList.toggle("cfb-backdrop-open");
+  }
+
+  function closeDrawer() {
+    sidebar.classList.remove("cfb-sidebar-open");
+    backdrop.classList.remove("cfb-backdrop-open");
+  }
+
+  toggle.addEventListener("click", toggleDrawer);
+  backdrop.addEventListener("click", closeDrawer);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeDrawer();
+    }
+  });
+
+  document.body.appendChild(toggle);
+  document.body.appendChild(backdrop);
+}
+
 function inject() {
+  // Wait for lang-chooser to be present
   const langChooser = document.querySelector("#header .lang-chooser");
   if (!langChooser) return;
+
+  // Don't inject twice
   if (document.getElementById("cfb-theme-wrapper")) return;
+
   langChooser.appendChild(buildThemePicker());
+
+  // Restore saved theme
   const saved = localStorage.getItem(STORAGE_KEY) || "light";
   applyTheme(saved);
+
+  // Initialize collapsible topics
   initCollapsibleTopics();
+
+  // Inject Mobile Menu toggle
   injectMobileMenu();
+
+  // Inject Sidebar Drawer toggle
+  injectSidebarDrawer();
+}
+
+// Codeforces loads the header synchronously, try immediately and fallback to DOMContentLoaded
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", inject);
+} else {
+  inject();
 }
