@@ -12,6 +12,8 @@ jobs:
   release:
     name: Package and Release Extension
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Code
@@ -27,4 +29,4 @@ jobs:
         with:
           files: codeforces-beautifier.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
