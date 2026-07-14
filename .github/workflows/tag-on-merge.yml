@@ -17,36 +17,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PA_TOKEN }} # Use custom token to allow triggers if needed
+          token: ${{ secrets.PA_TOKEN }}
+          fetch-depth: 0
 
-      - name: Setup Git Configuration
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Bump Version in manifest.json
-        id: bump_version
-        run: |
-          NEW_VERSION=$(node -p "
-            const fs = require('fs');
-            const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
-            const parts = m.version.split('.').map(Number);
-            parts[2]++;
-            const next = parts.join('.');
-            m.version = next;
-            fs.writeFileSync('manifest.json', JSON.stringify(m, null, 2) + '\n');
-            next;
-          ")
-          echo "NEW_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
-          echo "Bumped version to $NEW_VERSION"
-
-      - name: Commit and Push Version Bump
-        run: |
-          git add manifest.json
-          git commit -m "chore: bump extension version to v${{ env.NEW_VERSION }} [skip ci]"
-          git push origin main
-
-      - name: Create and Push Tag
-        run: |
-          git tag v${{ env.NEW_VERSION }}
-          git push origin v${{ env.NEW_VERSION }}
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@latest
+        with:
+          github-token: ${{ secrets.PA_TOKEN }}
+          git-user-name: 'GrowBoard Bot'
+          output-file: false
+          version-file: 'manifest.json'
+          git-path: '.'
+          tag-prefix: 'v'
+          skip-on-empty: 'false'
