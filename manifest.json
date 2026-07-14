@@ -1,17 +1,27 @@
 {
   "manifest_version": 3,
   "name": "Codeforces Beautifier",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Beautifies the Codeforces website with a modern dark theme, clean layout, and theme switcher.",
   "content_scripts": [
     {
-      "matches": ["*://codeforces.com/*", "*://*.codeforces.com/*"],
-      "css": ["style.css"],
+      "matches": [
+        "*://codeforces.com/*",
+        "*://*.codeforces.com/*"
+      ],
+      "css": [
+        "style.css"
+      ],
       "run_at": "document_start"
     },
     {
-      "matches": ["*://codeforces.com/*", "*://*.codeforces.com/*"],
-      "js": ["content.js"],
+      "matches": [
+        "*://codeforces.com/*",
+        "*://*.codeforces.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_end"
     }
   ]
