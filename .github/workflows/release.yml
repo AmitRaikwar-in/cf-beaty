@@ -1,0 +1,27 @@
+name: Release Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    name: Package and Release Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Package Extension (Zip)
+        run: |
+          zip -r codeforces-beautifier.zip . -x "*.git*" "*.github*" "*.DS_Store*"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: codeforces-beautifier.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
