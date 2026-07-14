@@ -34,3 +34,4 @@ jobs:
           git-path: "."
           tag-prefix: "v"
           skip-on-empty: "false"
+          skip-ci: "false"
