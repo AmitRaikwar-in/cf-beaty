@@ -1402,3 +1402,199 @@ div.alert-danger {
   overflow: hidden !important;
   color: var(--text-secondary) !important;
 }
+
+/* Meta row — author, time, comments etc. */
+.topic .meta,
+.roundbox.meta {
+  margin-top: 12px !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  overflow: visible !important;
+  padding: 12px 16px !important;
+  box-sizing: border-box !important;
+}
+
+.topic .meta ul,
+.roundbox.meta ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 4px 12px !important;
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+}
+
+/* Left meta: tags, author */
+.topic .left-meta,
+.roundbox.meta .left-meta {
+  float: none !important;
+}
+
+.topic .meta .left-meta ul li,
+.roundbox.meta .left-meta ul li {
+  float: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin: 0 !important;
+}
+
+.topic .meta .left-meta ul li img,
+.roundbox.meta .left-meta ul li img {
+  opacity: 0.4 !important;
+  filter: brightness(1.5) !important;
+}
+
+/* Right meta: views, comments, date */
+.topic .right-meta,
+.roundbox.meta .right-meta {
+  float: none !important;
+}
+
+.topic .meta .right-meta ul li,
+.roundbox.meta .right-meta ul li {
+  float: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  color: var(--text-muted) !important;
+  font-size: 12px !important;
+}
+
+/* Complaint frame inline alignment */
+.ComplaintFrame {
+  position: static !important;
+  display: inline-block !important;
+  float: none !important;
+  margin: 0 4px !important;
+}
+
+/* Action buttons (edit/delete) */
+.has-topic-id .topic-actions {
+  float: none !important;
+  position: absolute !important;
+  top: 14px !important;
+  right: 16px !important;
+}
+
+.has-topic-id .topic-actions ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  gap: 6px !important;
+}
+
+.has-topic-id .topic-actions ul li + li::before {
+  content: "" !important; /* remove the default pipe separator */
+  margin: 0 !important;
+}
+
+.has-topic-id .topic-actions ul li a {
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  padding: 3px 8px !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.has-topic-id .topic-actions ul li a:hover {
+  color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  background: var(--accent-glow) !important;
+}
+
+/* User pic float */
+.topic-userpic {
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  padding: 4px !important;
+  float: right !important;
+  margin-left: 14px !important;
+  background: var(--bg-card) !important;
+}
+
+/* Collapsible blog post adjustments */
+.collapsible-topic.collapsed .content .ttypography {
+  max-height: 3.4em !important; /* Show exactly 2 lines of text (2 * 1.7 line-height) */
+  overflow: hidden !important;
+}
+
+.collapsible-topic .content .collapsible-topic-options {
+  position: relative !important;
+  margin-top: 10px !important;
+  font-size: 12px !important;
+}
+
+/* Collapsible fade-out gradient — adapt to active theme background */
+.collapsible-topic.collapsed .content .collapsible-topic-options:before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 40px !important;
+  bottom: calc(100% - 2px) !important;
+  z-index: 10 !important;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--bg-secondary) 85%
+  ) !important;
+  pointer-events: none !important;
+}
+
+/* Emphasized Read more / Read less toggle pill-button */
+.cfb-toggle-link {
+  color: var(--accent-color) !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+  margin-top: 6px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 5px 12px !important;
+  border-radius: 100px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.cfb-toggle-link:hover {
+  color: var(--accent-hover) !important;
+  background: var(--accent-glow) !important;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 4px 12px var(--accent-glow) !important;
+  transform: translateY(-1px) !important;
+  text-decoration: none !important;
+}
+
+.cfb-toggle-link:active {
+  transform: translateY(0) !important;
+}
+
+.cfb-toggle-icon {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: inline-block !important;
+}
+
+.collapsible-topic:not(.collapsed) .cfb-toggle-icon {
+  transform: rotate(180deg) !important;
+}
+
+/* Topic options row */
+.topic .content .topic-options {
+  margin-top: 10px !important;
+  font-size: 12px !important;
+}
