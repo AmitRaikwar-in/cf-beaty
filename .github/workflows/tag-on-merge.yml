@@ -1,0 +1,52 @@
+name: Bump Version and Tag
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  bump-and-tag:
+    name: Bump manifest version and tag release
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PA_TOKEN }} # Use custom token to allow triggers if needed
+
+      - name: Setup Git Configuration
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump Version in manifest.json
+        id: bump_version
+        run: |
+          NEW_VERSION=$(node -p "
+            const fs = require('fs');
+            const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+            const parts = m.version.split('.').map(Number);
+            parts[2]++;
+            const next = parts.join('.');
+            m.version = next;
+            fs.writeFileSync('manifest.json', JSON.stringify(m, null, 2) + '\n');
+            next;
+          ")
+          echo "NEW_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
+          echo "Bumped version to $NEW_VERSION"
+
+      - name: Commit and Push Version Bump
+        run: |
+          git add manifest.json
+          git commit -m "chore: bump extension version to v${{ env.NEW_VERSION }} [skip ci]"
+          git push origin main
+
+      - name: Create and Push Tag
+        run: |
+          git tag v${{ env.NEW_VERSION }}
+          git push origin v${{ env.NEW_VERSION }}
