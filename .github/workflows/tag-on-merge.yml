@@ -25,9 +25,9 @@ jobs:
         uses: TriPSs/conventional-changelog-action@latest
         with:
           github-token: ${{ secrets.PA_TOKEN }}
-          git-user-name: 'GrowBoard Bot'
+          git-user-name: "CF beauty bot"
           output-file: false
-          version-file: 'manifest.json'
-          git-path: '.'
-          tag-prefix: 'v'
-          skip-on-empty: 'false'
+          version-file: "manifest.json"
+          git-path: "."
+          tag-prefix: "v"
+          skip-on-empty: "false"
