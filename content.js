@@ -192,6 +192,45 @@ function initCollapsibleTopics() {
   });
 }
 
+function injectMobileMenu() {
+  const header = document.querySelector("#header");
+  if (!header) return;
+  if (document.getElementById("cfb-mobile-menu-toggle")) return;
+
+  const toggle = document.createElement("button");
+  toggle.id = "cfb-mobile-menu-toggle";
+  toggle.title = "Toggle menu";
+  toggle.innerHTML = `
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>`;
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const menuBox = document.querySelector(".roundbox.menu-box");
+    if (menuBox) {
+      menuBox.classList.toggle("cfb-nav-open");
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    const menuBox = document.querySelector(".roundbox.menu-box");
+    const toggleBtn = document.getElementById("cfb-mobile-menu-toggle");
+    if (menuBox && toggleBtn && !menuBox.contains(e.target) && !toggleBtn.contains(e.target)) {
+      menuBox.classList.remove("cfb-nav-open");
+    }
+  });
+
+  const firstChild = header.firstElementChild || header.firstChild;
+  if (firstChild) {
+    header.insertBefore(toggle, firstChild);
+  } else {
+    header.appendChild(toggle);
+  }
+}
+
 function inject() {
   const langChooser = document.querySelector("#header .lang-chooser");
   if (!langChooser) return;
@@ -200,4 +239,5 @@ function inject() {
   const saved = localStorage.getItem(STORAGE_KEY) || "light";
   applyTheme(saved);
   initCollapsibleTopics();
+  injectMobileMenu();
 }
