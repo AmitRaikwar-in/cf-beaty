@@ -49,6 +49,6 @@ To use this extension in Google Chrome (or any Chromium-based browser like Brave
 
 This project includes a automated GitHub Actions workflow to package and release the extension.
 
-- **Trigger**: Pushing a version tag matching `v*` (e.g. `v1.1.0`).
+- **Trigger**: Manually triggered via GitHub's **Actions** tab (`workflow_dispatch`).
 - **Functionality**: Packages the required code files (`manifest.json`, `content.js`, `style.css`) into a zip archive and uploads it as a release asset under a new GitHub Release.
 - **Required Secrets**: Configure `PA_TOKEN` in your repository secrets to allow GitHub Actions to generate releases.
